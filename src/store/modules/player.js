@@ -35,6 +35,9 @@ const playerModule = {
         }
       }
     },
+    collection_dele(state, id) {
+      state.collection_list = state.collection_list.filter(it => it.song_id !== id)
+    },
   },
   actions: {
     reqSong(store) {

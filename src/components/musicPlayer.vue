@@ -19,6 +19,7 @@ export default {
   name: 'musicPlayer',
   computed: {
     ...mapState('playerModule', ['song_url', 'img_url', 'song_name', 'song_ather']),
+    ...mapState('loginModule', ['sw']),
   },
   methods: {
     ...mapActions('playerModule', ['reqSong']),
@@ -27,7 +28,16 @@ export default {
       this.reqSong()
     },
     add() {
-      this.collection()
+      if (this.sw) {
+        if (this.img_url) {
+          alert('添加成功')
+          this.collection()
+        } else {
+          alert('请选择歌曲')
+        }
+      } else {
+        this.$router.push({ path: '/my/login' })
+      }
     },
   },
 }

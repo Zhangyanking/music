@@ -69,6 +69,10 @@ const routes = [
         name: 'login',
         component: () => import('@/views/my/login.vue'),
       },
+      {
+        path: '/my',
+        redirect: '/my/myMusic',
+      },
     ],
   },
 ]
@@ -79,10 +83,10 @@ const router = new VueRouter({
   routes,
 })
 router.beforeEach((to, from, next) => {
-  if (to.name === 'my') {
+  if (to.name === 'my-music') {
     const log = store.state.sw
     if (log) {
-      next({ path: '/my/myMusic' })
+      next()
     } else {
       next({ path: '/my/login' })
     }

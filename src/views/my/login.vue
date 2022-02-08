@@ -36,10 +36,9 @@ export default {
         password: this.word,
       }
       this.user(por)
-      this.sing()
-      if (this.sw) {
+      this.sing().then(data => {
         this.$router.push({ path: '/my/myMusic' })
-      }
+      })
     },
   },
 }

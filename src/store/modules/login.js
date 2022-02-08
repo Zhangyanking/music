@@ -18,8 +18,7 @@ const loginModule = {
   actions: {
     sing(store) {
       const a = store.state.por
-      reqLog(a).then(data => {
-        console.log(data)
+      return reqLog(a).then(data => {
         store.commit('changesw', data)
       })
     },
